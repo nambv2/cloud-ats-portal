@@ -3,6 +3,7 @@
 
     <div class="actionMenu row btn-action-list">
       <span class="col-sm-6 pull-right"> 
+        <a class="btn btn-primary" ng-show="functionalUpload" data-toggle="modal" data-target="#uploadCode">Upload</a>
         <a class="btn btn-primary" ng-click="edit()">Edit</a>
         <a data-ui-sref="app.projects" class="btn btn-default">Close</a>
       </span>
@@ -96,4 +97,5 @@
     </div>
     <div class="modal fade" id="project-edittion">
     </div>
+    <div data-smart-include="app/keyword/views/upload-code.tpl.html"></div>
 </div>

@@ -55,6 +55,9 @@ define(['projects/module', 'lodash'], function (module, _) {
 
       var projectId = project._id;
       var projectType = project.type;
+      //$scope.functionalType = project.upload_project;
+      var upload_project = project.upload_project;
+      $scope.functionalType = upload_project === "false" ? "new" : "upload";
 
       $('[data-toggle="popover"]').each(function () {
         $(this).popover('hide');
@@ -65,7 +68,7 @@ define(['projects/module', 'lodash'], function (module, _) {
           $state.go('app.performance', {id: projectId});
           break;
         case 'keyword':
-          $state.go('app.keyword', { id : projectId });
+          $state.go('app.keyword', { id : projectId, type : $scope.functionalType });
           break;
         case 'functional':
           $state.go('app.functional', { id : projectId });

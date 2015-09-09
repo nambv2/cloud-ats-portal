@@ -12,7 +12,7 @@ define([
   module.config(function($stateProvider, $couchPotatoProvider) {
     $stateProvider
     .state('app.keyword', {
-      url: '/project/keyword/:id',
+      url: '/project/keyword/:type/:id',
       views: {
         "content@app": {
           templateUrl: 'app/keyword/views/overview.html',

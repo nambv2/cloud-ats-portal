@@ -6,8 +6,14 @@ define(['keyword/module', 'lodash'], function (module, _) {
 
       $scope.projectId = $stateParams.id;
 
+      $scope.functionalUpload = false;
+
+      if($stateParams.type === 'upload') {
+        $scope.functionalUpload = true;
+      }
+
       $scope.title = 'OVERVIEWS';
-      
+
       $scope.suiteReports = [];
 
       $scope.dataReports = [];
@@ -246,6 +252,15 @@ define(['keyword/module', 'lodash'], function (module, _) {
       }
 
       EventService.feed(updateStatus);
+
+      $scope.uploadFile = function(element) {
+        $scope.file = element.files[0];
+      }
+
+      $scope.upload = function(projectId) {
+        KeywordService.upload(projectId,$scope.file,function(data){
+        });
+      }
 
   }]);
 });

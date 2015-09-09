@@ -56,7 +56,7 @@ define(['keyword/module'], function(module) {
         });
       },
 
-      create: function(name, callback) {
+      create: function(name, type, callback) {
         var request = {
           method: 'POST',
           url: appConfig.RestEntry + '/api/v1/project/keyword',
@@ -65,7 +65,8 @@ define(['keyword/module'], function(module) {
             'X-SPACE': $cookies.get('space')
           },
           data: {
-            name: name
+            name: name,
+            type: type
           }
         };
 
@@ -151,6 +152,27 @@ define(['keyword/module'], function(module) {
         }).error(function(data, status) {
 
         });
+      },
+      upload : function(projectId,file,callback) {
+          var formData = new FormData();
+          formData.append('file',file);
+          var request = {
+            method: 'POST',
+            url: appConfig.RestEntry + '/api/v1/project/keyword/'+ projectId + '/upload',
+            headers: {
+              'X-AUTH-TOKEN': $cookies.get('authToken'),
+              'Content-Type': undefined
+            },
+            data:formData
+          }
+
+          $http(request)
+          .success(function(data) {
+            callback(data);
+          })
+          .error(function(data) {
+            callback(data);
+          });
       }
     }
   }]);

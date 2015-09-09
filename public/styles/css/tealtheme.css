@@ -1559,3 +1559,6 @@ block-darksky-color
     cursor: pointer;
     font-size: larger;
 }
+.functional-treeview {
+	padding-left: 25px;
+}

@@ -6,6 +6,8 @@ define(['projects/module'], function (module) {
 
     $scope.type = 'functional';
 
+    $scope.functionalType = 'new';
+
     var $input =  $('div#createProject input[name="name"]');
 
     $input.on('keypress', function () {
@@ -27,8 +29,8 @@ define(['projects/module'], function (module) {
 
         switch ($scope.type) {
           case 'functional' :
-            KeywordService.create($scope.name, function(projectId) {
-              $state.go('app.keyword', { id : projectId });
+            KeywordService.create($scope.name, $scope.functionalType, function(projectId) {
+              $state.go('app.keyword', { id : projectId , type : $scope.functionalType});
             });
             break;
           case 'performance' :

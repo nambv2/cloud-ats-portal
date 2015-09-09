@@ -10,6 +10,10 @@ define(['keyword/module'], function (module) {
 
       $scope.title = 'EXECUTION';
 
+      if($stateParams.type === 'upload') {
+        $scope.functionalUpload = true;
+      }
+
       var selected = [];
 
       var checkProjectStatus = function() {
